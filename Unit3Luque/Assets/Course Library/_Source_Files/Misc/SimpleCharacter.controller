@@ -72,7 +72,7 @@ AnimatorController:
   - m_Name: DeathType_int
     m_Type: 3
     m_DefaultFloat: 0
-    m_DefaultInt: 2
+    m_DefaultInt: 5
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: Body_Vertical_f
@@ -7388,7 +7388,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Running_Jump
-  m_Speed: 1
+  m_Speed: 0.7
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 110126729}
@@ -8142,7 +8142,7 @@ AnimatorStateMachine:
     m_Position: {x: 144, y: -192, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110255762}
-    m_Position: {x: 144, y: -48, z: 0}
+    m_Position: {x: 140, y: -50, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110250891}
     m_Position: {x: -336, y: -192, z: 0}
@@ -8257,7 +8257,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 110244708}
-    m_Position: {x: 24, y: 72, z: 0}
+    m_Position: {x: 40, y: -80, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110261697}
     m_Position: {x: -72, y: 180, z: 0}
@@ -8269,7 +8269,7 @@ AnimatorStateMachine:
     m_Position: {x: 168, y: 240, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110208860}
-    m_Position: {x: -72, y: 240, z: 0}
+    m_Position: {x: -70, y: 240, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110238341}
     m_Position: {x: -240, y: 0, z: 0}
@@ -8278,7 +8278,7 @@ AnimatorStateMachine:
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
-  m_AnyStatePosition: {x: 50, y: 20, z: 0}
+  m_AnyStatePosition: {x: 270, y: -40, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
