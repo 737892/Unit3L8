@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -16,6 +17,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip jumpSound;
     public AudioClip crashSound;
     private AudioSource playerAudio;
+    public int jumpCount = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -29,16 +31,26 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !gameOver)
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            Time.timeScale = 1.5f;
+            Debug.Log("is sprinting");
+        }
+        else
+        {
+            Time.timeScale = 1f;
+        }
+           
+        if (Input.GetKeyDown(KeyCode.Space) && isOnGround && !gameOver && jumpCount < 2)
         {
             playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
             isOnGround = false;
             playerAnim.SetTrigger("Jump_trig");
             dirtParticle.Stop();
             playerAudio.PlayOneShot(jumpSound, 1.0f);
-        
+            jumpCount++;
         }
-
+        JumpCountCheck();
         
     }
     private void OnCollisionEnter(Collision collision)
@@ -48,10 +60,8 @@ public class PlayerController : MonoBehaviour
             isOnGround = true;
             dirtParticle.Play();
         }
-            
+
         else if (collision.gameObject.CompareTag("Obstacle"))
-        
-      
         {
             gameOver = true;
             Debug.Log("Game Over!");
@@ -59,10 +69,23 @@ public class PlayerController : MonoBehaviour
             playerAnim.SetInteger("DeathType_int", 1);
             explosionParticle.Play();
             dirtParticle.Stop();
-            {
-                playerAudio.PlayOneShot(crashSound, 1.0f);
-            }
+            playerAudio.PlayOneShot(crashSound, 1.0f);
+
         }
-            
+
+    }
+
+    private void JumpCountCheck()
+    {
+        if (jumpCount >= 2)
+        {
+            isOnGround = false;
+            jumpCount = 0;
+        }
+        else if (jumpCount == 1 && !gameOver)
+        {
+            isOnGround = true;
+        }
+
     }
 }
