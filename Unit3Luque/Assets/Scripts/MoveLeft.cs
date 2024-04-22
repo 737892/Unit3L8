@@ -18,9 +18,17 @@ public class MoveLeft : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (playerControllerScript.gameOver == false) 
-        transform.Translate(Vector3.left * Time.deltaTime * speed);
-        if (transform.position.x < leftBound && gameObject.CompareTag("Obstacle"))
+        // If game is not over, move to the left
+        if (playerControllerScript.gameOver == false)
+       {
+            transform.Translate(Vector3.left * speed * Time.deltaTime, Space.World);
+        }
+
+
+        //If object goes off screen that is NOT the background, destroy it
+        if (transform.position.x < leftBound && gameObject.CompareTag("Background"))
+        {
             Destroy(gameObject);
+        }
     }
 }
